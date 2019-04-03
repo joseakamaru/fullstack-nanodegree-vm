@@ -13,4 +13,16 @@ for veggieBurger in veggieBurgers:
     print(veggieBurger.price)
     print(veggieBurger.restaurant.name)
     print("\n")
-    
+
+UrbanVeggieBurger = session.query(MenuItem).filter_by(id = 3).one()
+print('Urban Burger Veggie Cost = ', UrbanVeggieBurger.price)
+UrbanVeggieBurger.price = '$5.75'
+session.add(UrbanVeggieBurger)
+session.commit()
+
+for veggieBurger in veggieBurgers:
+    if veggieBurger.price != '$2.99':
+        veggieBurger.price = '$2.99'
+        session.add(veggieBurger)
+        session.commit()
+        
