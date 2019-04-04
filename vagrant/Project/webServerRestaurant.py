@@ -16,6 +16,8 @@ class WebServerHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path.endswith("/restaurants"):
+            restaurants = session.query(Restaurant).all()
+            output = ""
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
